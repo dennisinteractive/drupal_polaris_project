@@ -1,0 +1,6 @@
+{
+    "name": "dennisdigital/polaris-drupal-project",
+    "description": "Project template for Polaris projects with composer",
+    "type": "project",
+    "license": "GPL-2.0-or-later"
+}
