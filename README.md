@@ -17,7 +17,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project dennisdigital/drupal-polaris-profile polaris-cms
+composer create-project dennisdigital/polaris-drupal-project polaris-cms
 ```
 
 With `composer require ...` you can download new dependencies to your 
