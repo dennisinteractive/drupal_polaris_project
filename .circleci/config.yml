@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install PHP Extensions
+          command: docker-php-ext-install gd
+      - run:
           name: "Initialize"
           command: |
             cp .env.example .env
