@@ -22,6 +22,10 @@ jobs:
             composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
             composer --verbose self-update --stable
             composer --verbose install
+      - save_cache:
+          key: composer
+          paths:
+            - ~/.composer/cache
       - run:
           name: Site install
           command: |
