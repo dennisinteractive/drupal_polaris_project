@@ -43,6 +43,9 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
@@ -91,9 +94,5 @@
                 "web.config"
             ]
         }
-    },
-    "config": {
-        "bin-dir": "bin/",
-        "sort-packages": true
     }
 }

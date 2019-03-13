@@ -1,0 +1,45 @@
+# PHP CircleCI 2.0 configuration file
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/7.3-apache-node-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: "Initialize"
+          command: |
+            cp .env.example .env
+            mkdir -p private && chmod -R 644 private
+      - run:
+          name: Composer
+          command: |
+            composer --verbose self-update --stable
+            composer --verbose install
+      - run:
+          name: Site install
+          command: |
+            cd web
+            ls
+            sudo -u www-data php core/scripts/drupal install polaris
+      - run:
+          name: Run tests
+          command: |
+            cd web
+            sudo -u www-data php core/scripts/run-tests.sh \
+                   --php /usr/local/bin/php \
+                   --keep-results \
+                   --color \
+                   --concurrency "31" \
+                   --sqlite sites/default/files/.ht.sqlite \
+                   --verbose
+      - store_artifacts:
+          path: web/sites/default/files/behat-verbose
+      - store_test_results:
+          path: web/sites/default/files/behat-verbose
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
