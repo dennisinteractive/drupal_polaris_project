@@ -36,12 +36,12 @@ all files not excluded by the .gitignore file.
 
 When installing the given `composer.json` some tasks are taken care of:
 
-* Drupal will be installed in the `docroot`-directory.
+* Drupal will be installed in the `web`-directory.
 * Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`docroot/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `docroot/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `docroot/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `docroot/profiles/contrib/`
+  instead of the one provided by Drupal (`web/vendor/autoload.php`).
+* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
+* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
+* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
 * Downloads Drupal scaffold files such as `index.php`, or `.htaccess`
 * Creates `sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `bin/drush`.
@@ -49,12 +49,12 @@ When installing the given `composer.json` some tasks are taken care of:
 
 ## Installing Polaris
 
-Create project will install Polaris into the docroot directory. You can now install Polaris as you would with any Drupal 8 site. See: [Drupal installation guide](https://www.drupal.org/node/1839310).
+Create project will install Polaris into the web directory. You can now install Polaris as you would with any Drupal 8 site. See: [Drupal installation guide](https://www.drupal.org/node/1839310).
  
 ## Updating Polaris
 
 To update Polaris, Drupal or any module to the newest version, constrained by the specified version in `composer.json`, execute `composer update`. This command will check every dependency for a new version, downloads it and updates the `composer.lock` accordingly.
-After that you can run `drush updb` in the docroot folder to update the database of your site.
+After that you can run `drush updb` in the web folder to update the database of your site.
 
 ### File update
 
