@@ -21,21 +21,25 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
-        "dennisdigital/polaris": "dev-CMS-96_polaris_profile",
+        "php": ">=7.0",
+        "composer/installers": "^1.2",
+        "oomphinc/composer-installers-extender": "^1.1",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/console": "^1.2",
-        "composer/installers": "^1.2",
-        "drush/drush": "~8.0|^9.0.0",
+        "drush/drush": "^9.0.0",
         "vlucas/phpdotenv": "^3.0",
-        "oomphinc/composer-installers-extender": "^1.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "zaporylie/composer-drupal-optimizations": "^1.0"
+        "zaporylie/composer-drupal-optimizations": "^1.0",
+        "drupal/core": "^8.6.0",
+        "dennisdigital/polaris": "dev-CMS-96_polaris_profile"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.6"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -72,9 +76,12 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "drush/Commands/{$name}": ["type:drupal-drush"]
         },
         "enable-patching": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "drupal-scaffold": {
             "initial": {
                 ".editorconfig": "../.editorconfig",
