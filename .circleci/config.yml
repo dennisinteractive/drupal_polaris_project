@@ -13,8 +13,8 @@ jobs:
             mkdir -p private && chmod -R 644 private
       - run:
           name: Composer
-          command: composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris-cms \
-                --stability dev \
+          command: composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris-cms
+                --stability dev
                 --no-interaction
       - run:
           name: Site install
@@ -26,12 +26,12 @@ jobs:
           name: Run tests
           command: |
             cd web
-            sudo -u www-data php core/scripts/run-tests.sh \
-                   --php /usr/local/bin/php \
-                   --keep-results \
-                   --color \
-                   --concurrency "31" \
-                   --sqlite sites/default/files/.ht.sqlite \
+            sudo -u www-data php core/scripts/run-tests.sh
+                   --php /usr/local/bin/php
+                   --keep-results
+                   --color
+                   --concurrency "31"
+                   --sqlite sites/default/files/.ht.sqlite
                    --verbose
       - store_artifacts:
           path: web/sites/default/files/behat-verbose
