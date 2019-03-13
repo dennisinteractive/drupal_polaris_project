@@ -26,13 +26,12 @@ jobs:
           name: Site install
           command: |
             cd web
-            ls
-            sudo -u www-data php core/scripts/drupal install polaris
+            php core/scripts/drupal install polaris
       - run:
           name: Run tests
           command: |
             cd web
-            sudo -u www-data php core/scripts/run-tests.sh
+            php core/scripts/run-tests.sh
                    --php /usr/local/bin/php
                    --keep-results
                    --color
