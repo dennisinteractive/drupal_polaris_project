@@ -79,7 +79,10 @@
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
-            }
+            },
+            "excludes": [
+                "web.config"
+            ]
         }
     },
     "config": {
