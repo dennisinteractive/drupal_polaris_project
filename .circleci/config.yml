@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/7.3-apache-node-browsers-legacy
+      - image: circleci/php:7.3-apache-node-browsers-legacy
     steps:
       - checkout
       - run:
