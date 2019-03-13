@@ -12,6 +12,16 @@ jobs:
             sudo apt-get install -y libpng-dev
             sudo docker-php-ext-install gd
       - run:
+          name: Install Drush
+          command: |
+            && curl -L -o /usr/bin/drush https://github.com/drush-ops/drush/releases/download/8.1.18/drush.phar
+            && chmod +x /usr/bin/drush
+      - run:
+          name: Install Drupal console
+          command: |
+            && curl -L -o /usr/bin/drupal https://drupalconsole.com/installer
+            && chmod +x /usr/bin/drupal
+      - run:
           name: "Initialize"
           command: |
             cp .env.example .env
