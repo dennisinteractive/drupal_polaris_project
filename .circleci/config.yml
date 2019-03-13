@@ -13,9 +13,10 @@ jobs:
             mkdir -p private && chmod -R 644 private
       - run:
           name: Composer
-          command: composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris-cms
-                --stability dev
-                --no-interaction
+          command: |
+            composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
+            composer --verbose self-update --stable
+            composer --verbose install
       - run:
           name: Site install
           command: |
