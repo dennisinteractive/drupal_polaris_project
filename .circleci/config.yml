@@ -35,13 +35,7 @@ jobs:
           name: Run tests
           command: |
             cd web
-            php core/scripts/run-tests.sh
-                   --php /usr/local/bin/php
-                   --keep-results
-                   --color
-                   --concurrency "31"
-                   --sqlite sites/default/files/.ht.sqlite
-                   --verbose
+            php core/scripts/run-tests.sh --php /usr/local/bin/php --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose
       - store_artifacts:
           path: web/sites/default/files/behat-verbose
       - store_test_results:
