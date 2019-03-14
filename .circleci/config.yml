@@ -25,7 +25,7 @@ jobs:
           name: Composer
           command: |
             composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
-            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_polaris_profile polaris-cms --stability dev --no-interaction
+            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris-cms --stability dev --no-interaction
       - save_cache:
           key: composer
           paths:
