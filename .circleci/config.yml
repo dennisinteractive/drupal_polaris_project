@@ -37,7 +37,7 @@ jobs:
             mkdir -p private && chmod -R 644 private
             cd web
             mkdir -p sites/default/files/behat-verbose
-            drush si standard --db-url=sqlite://sites/default/files/.ht.sqlite -y
+            drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
       - run:
           name: Run tests
           command: |
