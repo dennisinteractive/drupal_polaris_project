@@ -57,4 +57,4 @@ workflows:
     jobs:
       # - build
       - build:
-        context: packagist
+          context: packagist
