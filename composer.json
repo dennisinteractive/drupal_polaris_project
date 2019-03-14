@@ -67,10 +67,10 @@
         "post-update-cmd": [
             "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "drupal config:import",
-            "drupal update:execute",
-            "drupal config:export",
-            "git status"
+            "echo drupal config:import",
+            "echo drupal update:execute",
+            "echo drupal config:export",
+            "echo git status"
         ]
     },
     "extra": {
