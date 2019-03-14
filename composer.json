@@ -3,6 +3,8 @@
     "description": "Project template for Polaris projects with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "repositories": [
         {
             "type": "composer",
@@ -26,9 +28,9 @@
         "oomphinc/composer-installers-extender": "^1.1",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
-        "drupal/console": "^1.2",
-        "drush/drush": "^9.0.0",
         "vlucas/phpdotenv": "^3.0",
+        "drupal/console": "~1.8.0",
+        "drush/drush": "^9.0.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "zaporylie/composer-drupal-optimizations": "^1.0",
@@ -41,8 +43,6 @@
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "config": {
         "sort-packages": true
     },
@@ -64,7 +64,11 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "drupal config:import",
+            "drupal update:execute",
+            "drupal config:export",
+            "git status"
         ]
     },
     "extra": {
