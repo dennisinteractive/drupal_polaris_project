@@ -22,12 +22,6 @@ jobs:
             sudo curl -L -o /usr/local/bin/drupal https://drupalconsole.com/installer
             sudo chmod +x /usr/local/bin/drupal
       - run:
-          name: "Initialize"
-          command: |
-            cp .env.example .env
-            mkdir -p private && chmod -R 644 private
-            mkdir -p web/sites/default/files/behat-verbose
-      - run:
           name: Composer
           command: |
             composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
@@ -39,8 +33,10 @@ jobs:
       - run:
           name: Site install
           command: |
+            mkdir -p private && chmod -R 644 private
             cd web
-            php core/scripts/drupal install polaris
+            mkdir -p sites/default/files/behat-verbose
+            drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
       - run:
           name: Run tests
           command: |
