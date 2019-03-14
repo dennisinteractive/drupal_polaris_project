@@ -26,6 +26,7 @@ jobs:
           command: |
             cp .env.example .env
             mkdir -p private && chmod -R 644 private
+            mkdir -p web/sites/default/files/behat-verbose
       - run:
           name: Composer
           command: |
