@@ -14,14 +14,13 @@ jobs:
       - run:
           name: Install Drush
           command: |
-            env
-            curl -L -o /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.4.2/drush.phar
-            chmod +x /usr/bin/drush
+            sudo curl -L -o /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.4.2/drush.phar
+            sudo chmod +x /usr/bin/drush
       - run:
           name: Install Drupal console
           command: |
-            curl -L -o /usr/local/bin/drupal https://drupalconsole.com/installer
-            chmod +x /usr/bin/drupal
+            sudo curl -L -o /usr/local/bin/drupal https://drupalconsole.com/installer
+            sudo chmod +x /usr/bin/drupal
       - run:
           name: "Initialize"
           command: |
