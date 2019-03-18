@@ -25,7 +25,7 @@ jobs:
             echo "ErrorLog ${APACHE_LOG_DIR}/error.log" >> /etc/apache2/sites-enabled/000-default.conf
             echo "CustomLog ${APACHE_LOG_DIR}/access.log combined" >> /etc/apache2/sites-enabled/000-default.conf
             echo "</VirtualHost>" >> /etc/apache2/sites-enabled/000-default.conf
-            /etc/init.d/apache2 graceful
+            sudo /etc/init.d/apache2 graceful
       - run:
           name: Prepare folders
           command: |
