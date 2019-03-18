@@ -12,6 +12,11 @@ jobs:
       #       sudo apt-get install -y libpng-dev
       #       sudo docker-php-ext-install gd
       - run:
+          name: Docker test
+          command: |
+            docker ps
+            docker image ls
+      - run:
           name: Install Drush
           command: |
             sudo curl -L -o /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.4.2/drush.phar
