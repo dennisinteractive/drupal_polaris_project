@@ -6,50 +6,44 @@ jobs:
       - image: dennisdigital/drupalci:8-apache-interactive
     steps:
       - checkout
-      # - run:
-      #     name: Install PHP Extensions
-      #     command: |
-      #       sudo apt-get install -y libpng-dev
-      #       sudo docker-php-ext-install gd
-      - run:
-          name: Install Drush
-          command: |
-            sudo curl -L -o /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.4.2/drush.phar
-            sudo chmod +x /usr/local/bin/drush
-      - run:
-          name: Install Drupal console
-          command: |
-            sudo curl -L -o /usr/local/bin/drupal https://drupalconsole.com/installer
-            sudo chmod +x /usr/local/bin/drupal
       - run:
           name: Composer
           command: |
+            cd /var/www
             composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
-            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris-cms --stability dev --no-interaction
+            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris_cms --stability dev --no-interaction
       - save_cache:
           key: composer
           paths:
             - ~/.composer/cache
       - run:
-          name: Rearrange folders
+          name: Configure Apache
           command: |
-            mv polaris-cms /var/www
+            echo "<VirtualHost *:80>" > /etc/apache2/sites-enabled/000-default.conf
+            echo "ServerAdmin webmaster@localhost" >> /etc/apache2/sites-enabled/000-default.conf
+            echo "DocumentRoot /var/www/polaris_cms/web" >> /etc/apache2/sites-enabled/000-default.conf
+            echo "ErrorLog ${APACHE_LOG_DIR}/error.log" >> /etc/apache2/sites-enabled/000-default.conf
+            echo "CustomLog ${APACHE_LOG_DIR}/access.log combined" >> /etc/apache2/sites-enabled/000-default.conf
+            echo "</VirtualHost>" >> /etc/apache2/sites-enabled/000-default.conf
+            /etc/init.d/apache2 graceful
+      - run:
+          name: Prepare folders
+          command: |
             cd /var/www
-            rm -rf html
-            mv polaris-cms html
+            mkdir -p polaris-cms/private
+            mkdir -p polaris-cms/web/sites/default/files/behat-verbose
+            mkdir -p polaris-cms/web/sites/simpletest
+            chown -R www-data:www-data polaris-cms
       - run:
           name: Site install
           command: |
-            cd polaris-cms
-            mkdir -p private && chmod -R 644 private
-            cd web
-            mkdir -p sites/default/files/behat-verbose
+            cd /var/www/polaris-cms
             drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
       - run:
           name: Run tests
           command: |
-            cd polaris-cms/web
-            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose Polaris
+            cd /var/www/polaris-cms
+            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
       - store_artifacts:
           path: web/sites/default/files/behat-verbose
       - store_test_results:
