@@ -12,10 +12,11 @@ jobs:
       #       sudo apt-get install -y libpng-dev
       #       sudo docker-php-ext-install gd
       - run:
-          name: Docker test
+          name: Tests
           command: |
-            docker ps
-            docker image ls
+            pwd
+            ls
+            id
       - run:
           name: Install Drush
           command: |
