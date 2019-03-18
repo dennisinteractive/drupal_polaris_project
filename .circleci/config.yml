@@ -12,12 +12,6 @@ jobs:
       #       sudo apt-get install -y libpng-dev
       #       sudo docker-php-ext-install gd
       - run:
-          name: Tests
-          command: |
-            pwd
-            ls
-            id
-      - run:
           name: Install Drush
           command: |
             sudo curl -L -o /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.4.2/drush.phar
@@ -36,6 +30,13 @@ jobs:
           key: composer
           paths:
             - ~/.composer/cache
+      - run:
+          name: Rearrange folders
+          command: |
+            mv polaris-cms /var/www
+            cd /var/www
+            rm -rf html
+            mv polaris-cms html
       - run:
           name: Site install
           command: |
