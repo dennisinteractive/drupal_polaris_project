@@ -40,6 +40,7 @@ class ScriptHandler {
       $fs->copy($drupalRoot . '/sites/default/default.settings.php', $drupalRoot . '/sites/default/settings.php');
       require_once $drupalRoot . '/core/includes/bootstrap.inc';
       require_once $drupalRoot . '/core/includes/install.inc';
+
       $settings['config_directories'] = [
         CONFIG_SYNC_DIRECTORY => (object) [
           'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sync', $drupalRoot),
@@ -47,6 +48,27 @@ class ScriptHandler {
         ],
       ];
       drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
+
+      $contents = file_get_contents($drupalRoot . '/sites/default/settings.php');
+      $settings = <<<EOF
+/**
+ * Environment DB configuration.
+ */
+if (!empty(getenv('MYSQL_DATABASE'))) {
+  \$databases['default']['default'] = [
+    'database' => getenv('MYSQL_DATABASE'),
+    'driver' => 'mysql',
+    'host' => getenv('MYSQL_HOSTNAME'),
+    'namespace' => 'Drupal\\\Core\\\Database\\\Driver\\\mysql',
+    'password' => getenv('MYSQL_PASSWORD'),
+    'port' => getenv('MYSQL_PORT'),
+    'prefix' => '',
+    'username' => getenv('MYSQL_USER'),
+  ];
+}
+EOF;
+      file_put_contents($drupalRoot . '/sites/default/settings.php', $contents . $settings);
+
       $fs->chmod($drupalRoot . '/sites/default/settings.php', 0666);
       $event->getIO()->write("Create a sites/default/settings.php file with chmod 0666");
     }
