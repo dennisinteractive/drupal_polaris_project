@@ -51,6 +51,7 @@ class ScriptHandler {
 
       $contents = file_get_contents($drupalRoot . '/sites/default/settings.php');
       $settings = <<<EOF
+
 /**
  * Environment DB configuration.
  */
@@ -66,6 +67,7 @@ if (!empty(getenv('MYSQL_DATABASE'))) {
     'username' => getenv('MYSQL_USER'),
   ];
 }
+
 EOF;
       file_put_contents($drupalRoot . '/sites/default/settings.php', $contents . $settings);
 
