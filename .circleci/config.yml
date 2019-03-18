@@ -38,7 +38,8 @@ jobs:
           name: Site install
           command: |
             cd /var/www/polaris-cms/web
-            drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
+            sudo -u www-data php core/scripts/drupal install polaris
+            echo "#drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y"
       - run:
           name: Run tests
           command: |
