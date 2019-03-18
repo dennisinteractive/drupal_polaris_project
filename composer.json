@@ -92,9 +92,6 @@
             "drupal/core": "-p2"
         },
         "drupal-scaffold": {
-            "initial": {
-                ".env.example": ".env"
-            },
             "excludes": [
                 "web.config"
             ]
