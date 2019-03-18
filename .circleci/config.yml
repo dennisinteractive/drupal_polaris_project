@@ -37,12 +37,12 @@ jobs:
       - run:
           name: Site install
           command: |
-            cd /var/www/polaris-cms
+            cd /var/www/polaris-cms/web
             drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
       - run:
           name: Run tests
           command: |
-            cd /var/www/polaris-cms
+            cd /var/www/polaris-cms/web
             php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
       - store_artifacts:
           path: web/sites/default/files/behat-verbose
