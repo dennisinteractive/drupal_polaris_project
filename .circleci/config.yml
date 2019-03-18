@@ -11,7 +11,7 @@ jobs:
           command: |
             cd /var/www
             composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
-            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris_cms --stability dev --no-interaction
+            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris-cms --stability dev --no-interaction
       - save_cache:
           key: composer
           paths:
@@ -21,7 +21,7 @@ jobs:
           command: |
             echo "<VirtualHost *:80>" > /etc/apache2/sites-enabled/000-default.conf
             echo "ServerAdmin webmaster@localhost" >> /etc/apache2/sites-enabled/000-default.conf
-            echo "DocumentRoot /var/www/polaris_cms/web" >> /etc/apache2/sites-enabled/000-default.conf
+            echo "DocumentRoot /var/www/polaris-cms/web" >> /etc/apache2/sites-enabled/000-default.conf
             echo "ErrorLog ${APACHE_LOG_DIR}/error.log" >> /etc/apache2/sites-enabled/000-default.conf
             echo "CustomLog ${APACHE_LOG_DIR}/access.log combined" >> /etc/apache2/sites-enabled/000-default.conf
             echo "</VirtualHost>" >> /etc/apache2/sites-enabled/000-default.conf
