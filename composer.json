@@ -93,8 +93,7 @@
         },
         "drupal-scaffold": {
             "initial": {
-                ".editorconfig": "../.editorconfig",
-                ".gitattributes": "../.gitattributes"
+                ".env.example": ".env"
             },
             "excludes": [
                 "web.config"
