@@ -43,8 +43,12 @@ jobs:
           path: /tmp/results
 
       - store_artifacts:
-          path: /var/www/polaris-cms/web/sites/simpletest
+          path: /var/www/polaris-cms/web/sites/default/files/simpletest
           destination: /tmp/results/simpletest
+
+      - store_artifacts:
+          path: /var/www/polaris-cms/web/sites/simpletest/browser_output
+          destination: /tmp/results/simpletest/browser_output
 
       - store_artifacts:
           path: /var/www/polaris-cms/web/sites/default/files/behat-verbose
