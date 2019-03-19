@@ -36,11 +36,11 @@ jobs:
       - run:
           name: Run tests
           command: |
-            exec /usr/sbin/apache2ctl -D FOREGROUND &
+            # exec /usr/sbin/apache2ctl -D FOREGROUND &
             cd /var/www/polaris-cms
             curl -L http://localhost:80
             ./vendor/bin/phpunit
-            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
+            php web/core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
       - store_artifacts:
           path: web/sites/default/files/behat-verbose
       - store_test_results:
