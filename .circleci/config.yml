@@ -49,9 +49,9 @@ jobs:
             ./vendor/bin/phpunit
             cp -a web/sites/simpletest /tmp/results          
       - store_artifacts:
-          path: web/sites/default/files/behat-verbose
+          path: /tmp/results
       - store_test_results:
-          path: web/sites/default/files/behat-verbose
+          path: /tmp/results
 
 workflows:
   version: 2
