@@ -25,33 +25,30 @@ jobs:
             mkdir -p polaris-cms/web/sites/simpletest
             mkdir -p /tmp/results
             chown -R www-data:www-data polaris-cms
-      # - run:
-      #     name: Start apache
-      #     background: true
-      #     command: exec /usr/sbin/apache2ctl -D FOREGROUND &
       - run:
           name: Site install
           command: |
             cd /var/www/polaris-cms/web
+            # drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
             sudo -u www-data php core/scripts/drupal install polaris
-            cd /var/www
-            rm -rf html
-            ln -s polaris-cms/web html
-            echo "#drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y"
+            cd /var/www && rm -rf html && ln -s polaris-cms/web html
       - run:
           name: Run tests
           command: |
-            # exec /usr/sbin/apache2ctl -D FOREGROUND &
             cd /var/www/polaris-cms
-            # curl -L http://localhost:80           
             php web/core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
-            cp -a web/sites/default/files/behat-verbose /tmp/results
             ./vendor/bin/phpunit
-            cp -a web/sites/simpletest /tmp/results          
-      - store_artifacts:
-          path: /tmp/results
+
       - store_test_results:
           path: /tmp/results
+
+      - store_artifacts:
+          path: web/sites/simpletest
+          destination: /tmp/results/simpletest
+
+      - store_artifacts:
+          path: web/sites/default/files/behat-verbose
+          destination: /tmp/results/behat-verbose
 
 workflows:
   version: 2
