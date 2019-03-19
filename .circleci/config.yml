@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            exec docker-php-entrypoint apache2-foreground &
+            exec /usr/sbin/apache2ctl -D FOREGROUND &
             cd /var/www/polaris-cms
             curl -L http://localhost:80
             ./vendor/bin/phpunit
