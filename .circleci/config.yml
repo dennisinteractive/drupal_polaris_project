@@ -25,6 +25,10 @@ jobs:
             mkdir -p polaris-cms/web/sites/simpletest
             mkdir -p /tmp/results
             chown -R www-data:www-data polaris-cms
+      # - run:
+      #     name: Start apache
+      #     background: true
+      #     command: exec /usr/sbin/apache2ctl -D FOREGROUND &
       - run:
           name: Site install
           command: |
@@ -39,11 +43,11 @@ jobs:
           command: |
             # exec /usr/sbin/apache2ctl -D FOREGROUND &
             cd /var/www/polaris-cms
-            curl -L http://localhost:80
-            ./vendor/bin/phpunit
+            # curl -L http://localhost:80           
             php web/core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
-            cp -a web/sites/simpletest /tmp/results
             cp -a web/sites/default/files/behat-verbose /tmp/results
+            ./vendor/bin/phpunit
+            cp -a web/sites/simpletest /tmp/results          
       - store_artifacts:
           path: web/sites/default/files/behat-verbose
       - store_test_results:
