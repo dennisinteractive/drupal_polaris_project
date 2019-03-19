@@ -23,6 +23,7 @@ jobs:
             mkdir -p polaris-cms/private
             mkdir -p polaris-cms/web/sites/default/files/behat-verbose
             mkdir -p polaris-cms/web/sites/simpletest
+            mkdir -p /tmp/results
             chown -R www-data:www-data polaris-cms
       - run:
           name: Site install
@@ -41,6 +42,8 @@ jobs:
             curl -L http://localhost:80
             ./vendor/bin/phpunit
             php web/core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
+            cp -a web/sites/simpletest /tmp/results
+            cp -a web/sites/default/files/behat-verbose /tmp/results
       - store_artifacts:
           path: web/sites/default/files/behat-verbose
       - store_test_results:
