@@ -20,25 +20,29 @@ jobs:
           name: Prepare folders
           command: |
             cd /var/www
+            rm -rf html
             mkdir -p polaris-cms/private
             mkdir -p polaris-cms/web/sites/default/files/behat-verbose
             mkdir -p polaris-cms/web/sites/simpletest
             mkdir -p /tmp/results
             chown -R www-data:www-data polaris-cms
+            chmod 777 polaris-cms
+            ln -s polaris-cms/web html
       - run:
           name: Site install
           command: |
             cd /var/www/polaris-cms/web
             sudo -u www-data drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
             # sudo -u www-data php core/scripts/drupal install polaris
-            cd /var/www && rm -rf html && ln -s polaris-cms/web html
       - run:
           name: Run tests
           command: |
+            echo $APACHE_LOG_DIR
+            cat /var/log/apache2/*.log
             cd /var/www/html
-            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
+            curl -L http://localhost
+            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --url http://localhost polaris
             ./vendor/bin/phpunit
-
       - store_test_results:
           path: /tmp/results
 
@@ -53,6 +57,10 @@ jobs:
       - store_artifacts:
           path: /var/www/polaris-cms/web/sites/default/files/behat-verbose
           destination: /tmp/results/behat-verbose
+
+      - store_artifacts:
+          path: /var/log/messages
+          destination: /tmp/logs
 
 workflows:
   version: 2
