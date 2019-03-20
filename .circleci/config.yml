@@ -35,8 +35,8 @@ jobs:
       - run:
           name: Run tests
           command: |
-            cd /var/www/polaris-cms
-            php web/core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
+            cd /var/www/html
+            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
             ./vendor/bin/phpunit
 
       - store_test_results:
