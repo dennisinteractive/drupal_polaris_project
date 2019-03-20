@@ -16,10 +16,10 @@ jobs:
           key: composer
           paths:
             - ~/.composer/cache
-      - run:
-          name: Start webserver
-          background: true
-          command: exec /usr/sbin/apache2ctl -D FOREGROUND &
+      # - run:
+      #     name: Start webserver
+      #     background: true
+      #     command: exec /usr/sbin/apache2ctl -D FOREGROUND &
       - run:
           name: Prepare folders
           command: |
@@ -36,6 +36,8 @@ jobs:
             # drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
             sudo -u www-data php core/scripts/drupal install polaris
             cd /var/www && rm -rf html && ln -s polaris-cms/web html
+            curl -L http://localhost
+            curl -L http://localhost/user/login
       - run:
           name: Run tests
           command: |
