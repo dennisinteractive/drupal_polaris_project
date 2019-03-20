@@ -16,10 +16,6 @@ jobs:
           key: composer
           paths:
             - ~/.composer/cache
-      # - run:
-      #     name: Start webserver
-      #     background: true
-      #     command: exec /usr/sbin/apache2ctl -D FOREGROUND &
       - run:
           name: Prepare folders
           command: |
