@@ -20,6 +20,12 @@ After that you can create the project:
 composer create-project dennisdigital/polaris-drupal-project polaris-cms
 ```
 
+Running the docker image locally:
+
+```
+docker run -v ~/polaris-cms/:/var/www/polaris-cms --rm --name drupal8 -p 8080:80 -d dennisdigital/drupalci:8-apache-interactive
+```
+
 With `composer require ...` you can download new dependencies to your 
 installation.
 
