@@ -33,8 +33,8 @@ jobs:
           name: Site install
           command: |
             cd /var/www/polaris-cms/web
-            # drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
-            sudo -u www-data php core/scripts/drupal install polaris
+            drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
+            # sudo -u www-data php core/scripts/drupal install polaris
             cd /var/www && rm -rf html && ln -s polaris-cms/web html
             curl -L http://localhost
             curl -L http://localhost/user/login
