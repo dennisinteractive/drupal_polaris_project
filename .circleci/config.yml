@@ -18,12 +18,14 @@ jobs:
             - ~/.composer/cache
 
       - run:
+          name: Install Drupal
+          command: cd /var/www/polaris-cms/web && sh profiles/contrib/polaris/scripts/install.sh
+
+      - run:
           name: Run tests
           command: |
-            cd /var/www/polaris-cms/web
-            sh profiles/contrib/polaris/scripts/install.sh
-            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
-            cd /var/www/polaris-cms/web && ./vendor/bin/phpunit
+            cd /var/www/polaris-cms/web && php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
+            cd /var/www/polaris-cms && ./vendor/bin/phpunit
 
       - store_artifacts:
           path: /var/www/polaris-cms/web/sites/default/files/simpletest
