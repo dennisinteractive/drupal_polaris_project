@@ -17,6 +17,10 @@ jobs:
           paths:
             - ~/.composer/cache
       - run:
+          name: Start webserver
+          background: true
+          command: exec /usr/sbin/apache2ctl -D FOREGROUND &
+      - run:
           name: Prepare folders
           command: |
             cd /var/www
@@ -36,7 +40,7 @@ jobs:
           name: Run tests
           command: |
             cd /var/www/html
-            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --url http://localhost:80 polaris
+            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
             ./vendor/bin/phpunit
 
       - store_test_results:
