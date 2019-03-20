@@ -18,7 +18,7 @@ jobs:
             - ~/.composer/cache
       - run:
           name: Run tests
-          command: cd /var/www/polaris-cms/web/profiles/contrib/polaris_drupal_profile/scripts && ./run-tests.sh
+          command: cd /var/www/polaris-cms/web/profiles/contrib/polaris/scripts && ./run-tests.sh
       - store_artifacts:
           path: /var/www/polaris-cms/web/sites/default/files/simpletest
           destination: /tmp/results/simpletest
