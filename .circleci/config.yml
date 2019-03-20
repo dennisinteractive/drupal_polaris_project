@@ -37,11 +37,8 @@ jobs:
       - run:
           name: Run tests
           command: |
-            echo $APACHE_LOG_DIR
-            cat /var/log/apache2/*.log
             cd /var/www/html
-            curl -L http://localhost
-            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --url http://localhost polaris
+            php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose polaris
             ./vendor/bin/phpunit
       - store_test_results:
           path: /tmp/results
@@ -60,7 +57,7 @@ jobs:
 
       - store_artifacts:
           path: /var/log/messages
-          destination: /tmp/logs
+          destination: /tmp/results/logs
 
 workflows:
   version: 2
