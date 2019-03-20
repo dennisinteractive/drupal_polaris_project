@@ -32,6 +32,7 @@ jobs:
             # drush si polaris --db-url=sqlite://sites/default/files/.ht.sqlite -y
             sudo -u www-data php core/scripts/drupal install polaris
             cd /var/www && rm -rf html && ln -s polaris-cms/web html
+            curl -L http://localhost:80
       - run:
           name: Run tests
           command: |
