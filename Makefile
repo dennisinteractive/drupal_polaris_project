@@ -5,7 +5,7 @@ help:
 	$(info make make build-vm           - Used to build the site on local VM                   )
 	$(info make build-ci                - Used to build the site on CI                         )
 	$(info make build-qa                - Used to build the site on QA                         )
-	$(info make site-install            - Used to install the site from scratch                )
+	$(info make make build-vm           - Used to build the site on local VM                   )
 	$(info make db-import               - Imports DB backups, imports config and runs updates  )
 	$(info make site-update             - Imports config and runs updates                      )
 	$(info make aws-credentials         - Checks and creates AWS credentials                   )
@@ -28,8 +28,8 @@ install-profile:
 
 test-profile:
 	cd /var/www/polaris-cms/web
-    sudo -u www-data php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --suppress-deprecations polaris
-    cd /var/www/polaris-cms && sudo -u www-data ./vendor/bin/phpunit
+	sudo -u www-data php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --suppress-deprecations polaris
+	cd /var/www/polaris-cms && sudo -u www-data ./vendor/bin/phpunit
 
 build-vm:
 	cp .env.vm .env
