@@ -13,23 +13,13 @@ help:
 	$(info *********************************************************************************** )
 
 start:
-	docker run -v "${PWD}:/var/www/polaris-cms" --rm --name drupal8 -p 8080:80 -d dennisdigital/drupalci:8-apache-interactive
+	docker run --rm --name drupal8 -p 8080:80 -d dennisdigital/drupalci:8-apache-interactive
+
+stop:
+	docker stop drupal8
 
 ssh:
-	docker exec -it drupal8 bash
-
-build-profile:
-	composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
-	composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding /var/www/polaris-cms --stability dev --no-interaction
-	make install-profile
-
-install-profile:
-	cd /var/www/polaris-cms/web && sh profiles/contrib/polaris/scripts/install.sh
-
-test-profile:
-	cd /var/www/polaris-cms/web
-	sudo -u www-data php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --suppress-deprecations polaris
-	cd /var/www/polaris-cms && sudo -u www-data ./vendor/bin/phpunit
+	docker exec -it drupal8 bash	
 
 build-vm:
 	cp .env.vm .env

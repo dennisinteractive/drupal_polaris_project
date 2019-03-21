@@ -9,15 +9,21 @@ jobs:
 
       - run:
           name: Build
-          command: make build-profile
+          command: |
+            if [ -z "${PACKAGIST_TOKEN}" ]; then echo "Env variable PACKAGIST_TOKEN missing, get a token from packagist.org"; exit 1; fi
+            composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
+            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding /var/www/polaris-cms --stability dev --no-interaction
 
-      # - run:
-      #     name: Install Drupal
-      #     command: make install-profile
+      - run:
+          name: Install profile
+          command: cd /var/www/polaris-cms/web && sh profiles/contrib/polaris/scripts/install.sh
 
       - run:
           name: Run tests
-          command: make test-profile
+          command: |
+            cd /var/www/polaris-cms/web
+            sudo -u www-data php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --suppress-deprecations polaris
+            cd /var/www/polaris-cms && sudo -u www-data ./vendor/bin/phpunit
 
       - store_artifacts:
           path: /var/www/polaris-cms/web/sites/default/files/simpletest
