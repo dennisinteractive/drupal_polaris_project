@@ -6,26 +6,18 @@ jobs:
       - image: dennisdigital/drupalci:8-apache-interactive
     steps:
       - checkout
-      - run:
-          name: Composer
-          command: |
-            composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
-            composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding /var/www/polaris-cms --stability dev --no-interaction
-      - save_cache:
-          key: composer
-          paths:
-            - ~/.composer/cache
 
       - run:
-          name: Install Drupal
-          command: cd /var/www/polaris-cms/web && sh profiles/contrib/polaris/scripts/install.sh
+          name: Build
+          command: make build-profile
+
+      # - run:
+      #     name: Install Drupal
+      #     command: make install-profile
 
       - run:
           name: Run tests
-          command: |
-            cd /var/www/polaris-cms/web
-            sudo -u www-data php core/scripts/run-tests.sh --keep-results --color --concurrency "31" --sqlite sites/default/files/.ht.sqlite --verbose --suppress-deprecations polaris
-            cd /var/www/polaris-cms && sudo -u www-data ./vendor/bin/phpunit
+          command: make test-profile
 
       - store_artifacts:
           path: /var/www/polaris-cms/web/sites/default/files/simpletest
@@ -45,6 +37,11 @@ jobs:
 
       - store_test_results:
           path: /tmp/results
+
+      - save_cache:
+          key: composer
+          paths:
+            - ~/.composer/cache
 
 workflows:
   version: 2
