@@ -73,7 +73,7 @@ new release of Drupal core.
 
 Follow the steps below to update your polaris_site files.
 
-1. Run `composer update burdamagazinorg/polaris_site`
+1. Run `composer update dennisdigital/polaris_site`
 1. Run `git diff` to determine if any of the scaffolding files have changed. 
    Review the files for any changes and restore any customizations to 
   `.htaccess` or `robots.txt`.
