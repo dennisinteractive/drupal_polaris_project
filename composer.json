@@ -29,11 +29,6 @@
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
         "vlucas/phpdotenv": "^3.0",
-        "drupal/console": "~1.8.0",
-        "drush/drush": "^9.0.0",
-        "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3",
-        "zaporylie/composer-drupal-optimizations": "^1.0",
         "dennisdigital/polaris": "dev-CMS-96_polaris_profile"
     },
     "require-dev": {
