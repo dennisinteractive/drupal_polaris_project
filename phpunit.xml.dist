@@ -38,6 +38,7 @@
   <testsuites>
     <testsuite name="custom_modules">
       <directory>web/profiles/contrib/polaris</directory>
+      <directory>web/modules</directory>
       <exclude>web/modules/contrib</exclude>
     </testsuite>
   </testsuites>

@@ -2,15 +2,25 @@ help:
 	$(info *********************************************************************************** )
 	$(info                      Polaris CMS: List of commands                                  )
 	$(info *********************************************************************************** )
+	$(info make make site-create        - Used to build and install the site for the first time)
 	$(info make make build-vm           - Used to build the site on local VM                   )
 	$(info make build-ci                - Used to build the site on CI                         )
 	$(info make build-qa                - Used to build the site on QA                         )
-	$(info make make build-vm           - Used to build the site on local VM                   )
+	$(info make site-install            - Used to install the site from scratch                )
 	$(info make db-import               - Imports DB backups, imports config and runs updates  )
 	$(info make site-update             - Imports config and runs updates                      )
 	$(info make aws-credentials         - Checks and creates AWS credentials                   )
 	$(info make update-aws-credentials: - Update-aws-credentials AWS credentials               )
 	$(info *********************************************************************************** )
+
+site-create:
+	mv .env.example .env.vm
+	cp .env.vm .env
+	echo "MYSQL_DATABASE=$(shell basename $(shell pwd))" >> .env
+	mkdir -p private && chmod -R 644 private
+	composer install
+	make site-install
+	git init
 
 build-vm:
 	cp .env.vm .env
