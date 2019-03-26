@@ -14,12 +14,11 @@ help:
 	$(info *********************************************************************************** )
 
 site-create:
-	mv .env.example .env.vm
 	cp .env.vm .env
 	echo "MYSQL_DATABASE=$(shell basename $(shell pwd))" >> .env
 	mkdir -p private && chmod -R 644 private
 	composer install
-	make site-install
+	drush si polaris -y
 	git init
 
 build-vm:
