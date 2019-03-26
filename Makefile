@@ -19,7 +19,10 @@ site-create:
 	mkdir -p private && chmod -R 644 private
 	composer install
 	drush si polaris -y
+	drush cex -y
 	git init
+	git status
+	echo "Site created and installed, now it's time to commit your files"
 
 build-vm:
 	cp .env.vm .env
