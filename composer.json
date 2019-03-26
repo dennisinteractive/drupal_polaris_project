@@ -28,7 +28,6 @@
         "oomphinc/composer-installers-extender": "^1.1",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
-        "vlucas/phpdotenv": "^3.0",
         "dennisdigital/polaris": "dev-CMS-96_polaris_profile"
     },
     "require-dev": {
