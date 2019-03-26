@@ -17,7 +17,7 @@ default:
   extensions:
     DennisDigital\Behat\Selenium\Extension\SeleniumServerExtension: ~
     Behat\MinkExtension:
-      base-url: 'http://polaris-cms.vm.cms.didev.co.uk'
+      base-url: 'http://polaris.vm.cms.didev.co.uk'
       files_path: '%paths.base%/features/files/'
       goutte: ~
       javascript_session: selenium_server
@@ -28,7 +28,7 @@ default:
         docker:
           config:
             standalone:
-              name: behat-selenium-standalone-polaris-cms
+              name: behat-selenium-standalone-polaris
               image: selenium/standalone-chrome:3.13.0
         capabilities:
           browser: chrome
@@ -40,7 +40,7 @@ default:
       api_driver: 'drupal'
       blackbox: ~
       drupal:
-        drupal_root: '/var/www/html/polaris-cms/web'
+        drupal_root: '/var/www/html/polaris/web'
       selectors:
         message_selector: '.messages'
         error_message_selector: '.messages.messages--error'
