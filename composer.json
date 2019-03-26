@@ -92,8 +92,15 @@
             "drupal/core": "-p2"
         },
         "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            },
             "excludes": [
-                "web.config"
+                "web.config",
+                ".circleci",
+                ".travis.yml",
+                "scripts/travis"
             ]
         }
     }
