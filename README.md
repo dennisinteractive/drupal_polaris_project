@@ -17,7 +17,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project dennisdigital/polaris-drupal-project:1.x-dev polaris --stability dev --no-interaction
+composer create-project dennisdigital/polaris-drupal-project:dev-CMS-96_scaffolding polaris --stability dev --no-interaction
 ```
 
 Running the docker image locally:

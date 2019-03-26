@@ -97,10 +97,7 @@
                 ".gitattributes": "../.gitattributes"
             },
             "excludes": [
-                "web.config",
-                ".circleci",
-                ".travis.yml",
-                "scripts/travis"
+                "web.config"
             ]
         }
     }

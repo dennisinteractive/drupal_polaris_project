@@ -12,15 +12,6 @@ help:
 	$(info make update-aws-credentials: - Update-aws-credentials AWS credentials               )
 	$(info *********************************************************************************** )
 
-start:
-	docker run --rm --name drupal8 -p 8080:80 -d dennisdigital/drupalci:8-apache-interactive
-
-stop:
-	docker stop drupal8
-
-ssh:
-	docker exec -it drupal8 bash	
-
 build-vm:
 	cp .env.vm .env
 	# Restart memcache
