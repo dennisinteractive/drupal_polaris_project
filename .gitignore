@@ -20,7 +20,6 @@ tmp/*
 .DS_Store
 
 # Ignore sensitive information
-web/sites/*/settings.php
 web/sites/*/settings.local.php
 
 # Ignore paths that contain user-generated content.
