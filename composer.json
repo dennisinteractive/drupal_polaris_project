@@ -34,7 +34,6 @@
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "zaporylie/composer-drupal-optimizations": "^1.0",
-        "drupal/core": "^8.6.0",
         "dennisdigital/polaris": "dev-CMS-96_polaris_profile"
     },
     "require-dev": {
