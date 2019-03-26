@@ -41,7 +41,7 @@ build-vm:
 	# Import db
 	make db-import
 	# Site login
-	drush uli --uri=http://$(shell basename $(shell pwd)).vm.cms.didev.co.uk
+	make uli
 
 build-ci:
 	cp .env.dist .env
@@ -56,6 +56,9 @@ build-qa:
 	composer install
 	make db-import
 	make run-tests
+
+uli:
+	drush uli --uri=http://$(shell basename $(shell pwd)).vm.cms.didev.co.uk
 
 # This database needs to be copied from S3
 db-import:
