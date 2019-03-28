@@ -1,0 +1,49 @@
+default:
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - DennisDigital\Behat\Mink\Context\HtmlContext
+        - DennisDigital\Behat\Mink\Context\JsContext
+        - DennisDigital\Behat\Mink\Context\HttpContext
+        - DennisDigital\Behat\Capture\Context\CaptureContext:
+            parameters:
+                screen_shot_path: %paths.base%/../web/sites/default/files/tests/captured/screenshot
+                screen_shot_url: %mink.base_url%/sites/default/files/tests/captured/screenshot
+                html_path: %paths.base%/../web/sites/default/files/tests/captured/html
+                html_url: %mink.base_url%/sites/default/files/tests/captured/html
+  extensions:
+    DennisDigital\Behat\Selenium\Extension\SeleniumServerExtension: ~
+    Behat\MinkExtension:
+      base-url: 'http://polaris.vm.cms.didev.co.uk'
+      files_path: '%paths.base%/features/files/'
+      goutte: ~
+      javascript_session: selenium_server
+      browser_name: chrome
+      selenium_server:
+        wd_port: 4444
+        wd_host: http://localhost:4444/wd/hub
+        docker:
+          config:
+            standalone:
+              name: behat-selenium-standalone-polaris
+              image: selenium/standalone-chrome:3.13.0
+        capabilities:
+          browser: chrome
+          chrome:
+            switches:
+              - '--headless'
+              - '--disable-gpu'
+    Drupal\DrupalExtension:
+      api_driver: 'drupal'
+      blackbox: ~
+      drupal:
+        drupal_root: '/var/www/html/polaris/web'
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.messages--error'
+        success_message_selector: '.messages.messages--status'
+  formatters:
+    progress: true

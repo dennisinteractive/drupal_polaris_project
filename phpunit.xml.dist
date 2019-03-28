@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         bootstrap="web/core/tests/bootstrap.php"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutChangesToGlobalState="true"
+         checkForUnintentionallyCoveredCode="false"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         strict="false"
+         syntaxCheck="false"
+         verbose="true"
+        >
+  <php>
+    <!-- Set error reporting to E_ALL. -->
+    <ini name="error_reporting" value="32767"/>
+    <!-- Do not limit the amount of memory tests take to run. -->
+    <ini name="memory_limit" value="-1"/>
+    <!-- Example SIMPLETEST_BASE_URL value: http://localhost -->
+    <env name="SIMPLETEST_BASE_URL" value="http://localhost"/>
+    <!-- Example SIMPLETEST_DB value: mysql://username:password@localhost/databasename#table_prefix -->
+    <env name="SIMPLETEST_DB" value="sqlite://localhost/sites/default/files/db_unit.sqlite"/>
+    <!-- Example BROWSERTEST_OUTPUT_DIRECTORY value: /path/to/webroot/sites/simpletest/browser_output -->
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/var/www/html/sites/default/files/phpunit"/>
+    <!-- Example BROWSERTEST_OUTPUT_FILE value: /path/to/webroot/sites/simpletest/browser_output/outputfile.txt -->
+    <env name="BROWSERTEST_OUTPUT_FILE" value="/var/www/html/sites/default/files/phpunit/outputfile.txt"/>
+  </php>
+  <testsuites>
+    <testsuite name="custom_modules">
+      <directory>web/profiles/contrib/polaris</directory>
+      <directory>web/modules</directory>
+      <exclude>web/modules/contrib</exclude>
+    </testsuite>
+  </testsuites>
+  <listeners>
+  </listeners>
+  <!-- Filter for coverage reports. -->
+  <filter>
+    <whitelist>
+      <directory>web/core/includes</directory>
+      <directory>web/core/lib</directory>
+      <directory>web/core/modules</directory>
+      <directory>web/modules</directory>
+      <directory>web/sites</directory>
+      <!-- By definition test classes have no tests. -->
+      <exclude>
+        <directory suffix="Test.php">./</directory>
+        <directory suffix="TestBase.php">./</directory>
+      </exclude>
+    </whitelist>
+  </filter>
+</phpunit>

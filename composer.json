@@ -2,5 +2,96 @@
     "name": "dennisdigital/polaris-drupal-project",
     "description": "Project template for Polaris projects with composer",
     "type": "project",
-    "license": "GPL-2.0-or-later"
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://repo.packagist.com/dennisdigital/"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "packagist.org": false
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "^1.2",
+        "oomphinc/composer-installers-extender": "^1.1",
+        "cweagans/composer-patches": "^1.6.5",
+        "drupal-composer/drupal-scaffold": "^2.6",
+        "dennisdigital/polaris": "dev-CMS-96_polaris_profile"
+    },
+    "require-dev": {
+        "webflo/drupal-core-require-dev": "^8.6"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": ["load.environment.php"]
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "@drupal-scaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "@drupal-scaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "echo # drupal config:import",
+            "echo # drupal update:execute",
+            "echo # drupal config:export",
+            "git status"
+        ]
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "installer-types": ["bower-asset"],
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset"
+            ],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+        "enable-patching": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            },
+            "excludes": [
+                "web.config"
+            ]
+        }
+    }
 }
