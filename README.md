@@ -9,7 +9,7 @@ First you need to install [Composer](https://getcomposer.org/doc/00-intro.md#ins
 ### Creating the project:
 
 ```
-composer create-project dennisdigital/polaris-drupal-project:^1.0.0 --stability dev --no-interaction
+composer create-project dennisdigital/polaris-drupal-project:^1.0.0 polaris --stability dev --no-interaction
 ```
 
 If you want to run the docker image locally:
