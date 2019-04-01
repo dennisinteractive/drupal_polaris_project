@@ -60,10 +60,10 @@
         "post-update-cmd": [
             "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "echo # drupal config:import",
-            "echo # drupal update:execute",
-            "echo # drupal config:export",
-            "git status"
+            "echo # drush cim -y",
+            "echo # drush updb -y",
+            "echo # drush cex -y",
+            "echo # git status"
         ]
     },
     "extra": {
