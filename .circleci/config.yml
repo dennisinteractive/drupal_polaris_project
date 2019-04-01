@@ -13,6 +13,7 @@ jobs:
             if [ -z "${PACKAGIST_TOKEN}" ]; then echo "Env variable PACKAGIST_TOKEN missing, get a token from packagist.org"; exit 1; fi
             composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
             composer create-project dennisdigital/polaris-drupal-project:1.x-dev /var/www/polaris --stability dev --no-interaction
+            cd /var/www/polaris && composer require dennisdigital/polaris-drupal-profile:${CIRCLE_BRANCH}-dev
 
       - run:
           name: Install profile
