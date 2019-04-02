@@ -15,12 +15,12 @@
             "url": "https://repo.packagist.com/dennisdigital/"
         },
         {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        },
-        {
             "type": "vcs",
             "url": "https://github.com/dennisinteractive/pathauto"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         },
         {
             "packagist.org": false
