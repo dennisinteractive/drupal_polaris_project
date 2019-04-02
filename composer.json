@@ -20,7 +20,7 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:dennisinteractive/pathauto.git"
+            "url": "https://github.com/dennisinteractive/pathauto.git"
         },
         {
             "packagist.org": false
