@@ -70,10 +70,10 @@ site-install:
 	drush site:install -y
 
 site-update:
-	drupal config:import
-	drupal update:execute
-	drupal config:export
-	drupal cr
+	drush cim -y
+	drush updb -y
+	drush cex -y
+	drush cr
 
 run-tests:
 	cd tests && ./behat
