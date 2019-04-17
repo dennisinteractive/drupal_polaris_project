@@ -18,6 +18,7 @@ site-create:
 	echo "MYSQL_DATABASE=$(shell basename $(shell pwd))" >> .env
 	mkdir -p private && chmod -R 644 private
 	composer install
+	drush -y sql-create
 	drush si polaris -y
 	drush cex -y
 	git init
