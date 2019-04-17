@@ -26,10 +26,8 @@ site-create:
 
 build-vm:
 	cp .env.vm .env
-	# Restart memcache
-	sudo service memcached stop
-	sudo service memcached start
 	echo "MEMCACHE_PREFIX=$(shell basename $(shell pwd))" >> .env
+	make restart-memcache
 	# Create .env and override db name using current directory
 	echo "MYSQL_DATABASE=$(shell basename $(shell pwd))" >> .env
 	# Fix directory permissions
@@ -56,6 +54,11 @@ build-qa:
 	composer install
 	make db-import
 	make run-tests
+
+restart-memcache:
+	# Restart memcache
+	sudo service memcached stop
+	sudo service memcached start
 
 uli:
 	drush uli --uri=http://$(shell basename $(shell pwd)).vm.cms.didev.co.uk
