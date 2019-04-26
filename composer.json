@@ -28,7 +28,7 @@
         "oomphinc/composer-installers-extender": "^1.1",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.6",
-        "dennisdigital/polaris": "8.x-1.x-dev"
+        "dennisdigital/polaris": "dev-CMS-26-gallery-content-type"
     },
     "require-dev": {
         "webflo/drupal-core-require-dev": "^8.6"
