@@ -74,6 +74,7 @@ site-install:
 	drush site:install -y
 
 site-update:
+	drush cr
 	drush cim -y
 	drush updb -y
 	drush cex -y
