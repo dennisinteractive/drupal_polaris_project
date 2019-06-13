@@ -30,9 +30,6 @@
         "drupal-composer/drupal-scaffold": "^2.6",
         "dennisdigital/polaris": "8.x-1.x-dev"
     },
-    "require-dev": {
-        "webflo/drupal-core-require-dev": "^8.6"
-    },
     "conflict": {
         "drupal/drupal": "*"
     },
