@@ -21,17 +21,22 @@ cd polaris && composer require dennisdigital/polaris:dev-[BRANCH]
 If you want to run the docker image locally:
 
 ```
-docker run -v ~/polaris/:/var/www/polaris --rm --name drupal8 -p 8080:80 -d dennisdigital/drupalci:8-apache-interactive
+docker run -v ./[LOCAL_FOLDER]/:/var/www/polaris --rm --name polaris -p 8080:80 -d dennisdigital/drupalci:8-apache-interactive
 ```
-This is useful when you want to work on the project and test changes locally. You can ssh inside the images and run the same commands
+This is useful when you want to work on the project and test changes locally. You can ssh inside the container and run the same commands
 as in .circleci folder.
 
 ```
-docker exec -it drupal8 sh
+docker exec -it polaris sh
 ```
 
 If you want to see the site, browse http://localhost:8080
 
+## Running phpunit tests inside the container
+```
+cd /var/www/polaris
+vendor/bin/phpunit
+```
 
 ## Installing Polaris
 
@@ -50,3 +55,4 @@ This will run a site installation, initialize git and export the config.
 ## Commit your files
 
 Now you need to commit your files. Remember to export a db dump.
+
