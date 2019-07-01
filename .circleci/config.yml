@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Install profile
-          command: cd /var/www/polaris/web && sh profiles/contrib/polaris/scripts/install.sh
+          command: cd /var/www/polaris/web && sh profiles/polaris/scripts/install.sh
 
       - run:
           name: Run tests
