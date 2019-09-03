@@ -28,7 +28,7 @@
         "oomphinc/composer-installers-extender": "^1.1",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.6",
-        "dennisdigital/polaris": "dev-CMS-744-correct-selenium2-mink"
+        "dennisdigital/polaris": "dev-CMS-744-correct-selenium2-mink#5ae1b1746c9f5f8382003e97c3070787b132243b"
     },
     "conflict": {
         "drupal/drupal": "*"
