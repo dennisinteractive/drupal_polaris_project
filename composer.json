@@ -29,7 +29,7 @@
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.6",
         "behat/mink-selenium2-driver": "1.4.x-dev as 1.3.x-dev", 
-        "dennisdigital/polaris": "8.x-2.x-dev"
+        "dennisdigital/polaris": "^2.0"
     },
     "conflict": {
         "drupal/drupal": "*"
