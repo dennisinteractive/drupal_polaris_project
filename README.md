@@ -54,7 +54,7 @@ This will run a site installation, initialize git and export the config.
 
 ## Login into site
 
-Login into site and add a basic admin password which can be shared with the team for development purposes.
+Login into site and add an administrator account with username: admin and password: {the usual one} which can be shared with the team for development purposes.
 
 ## Commit your files
 
