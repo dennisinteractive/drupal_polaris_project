@@ -52,6 +52,10 @@ make site-create
 
 This will run a site installation, initialize git and export the config.
 
+## Login into site
+
+Login into site and add a basic admin password which can be shared with the team for development purposes.
+
 ## Commit your files
 
 Now you need to commit your files. Remember to export a db dump.
