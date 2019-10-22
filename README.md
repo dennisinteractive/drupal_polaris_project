@@ -40,7 +40,7 @@ vendor/bin/phpunit
 
 ## Installing Polaris
 
-Create project will install Polaris into the web directory. You can now install Polaris as you would with any Drupal 8 site. See: [Drupal installation guide](https://www.drupal.org/node/1839310).
+Create project will install Polaris into the web directory. You can now install Polaris as you would with any Drupal 8 site. See: [Drupal installation guide](https://www.drupal.org/node/1839310). The folder name should be the repo name without -cms: Repo name: itpro-cms, folder name itpro.
 If you are using the Polaris Vagrant box you can run the command on /var/www/html folder. Then visit http://polaris.vm.cms.didev.co.uk.
 See the Readme of the [Vagrant box for more info](https://github.com/dennisinteractive/polaris-ansible).
 
