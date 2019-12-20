@@ -9,7 +9,7 @@ First you need to install [Composer](https://getcomposer.org/doc/00-intro.md#ins
 ### Creating the project:
 
 ```
-composer create-project dennisdigital/polaris-drupal-project:^2.0.0 polaris --stability dev --no-interaction
+composer create-project dennisdigital/polaris-drupal-project:^3.0.0 polaris --stability dev --no-interaction
 ```
 
 If you want to check out a different version of the profile or any contrib module:
