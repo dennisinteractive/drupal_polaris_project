@@ -26,7 +26,7 @@
         "drupal-composer/drupal-scaffold": "^2.6",
         "behat/mink-selenium2-driver": "1.4.x-dev as 1.3.x-dev",
         "wikimedia/composer-merge-plugin": "^1.4",
-        "dennisdigital/polaris": "^3.0"
+        "dennisdigital/polaris": "dev-CMS-1203-select2-widget"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -47,28 +47,17 @@
         ],
         "pre-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "@drupal-scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "@drupal-scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "echo # drush cim -y",
-            "echo # drush updb -y",
-            "echo # drush cex -y",
-            "echo # git status"
         ]
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
-        "installer-types": ["bower-asset"],
+        "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": [
                 "type:drupal-library",
-                "type:bower-asset"
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/{$name}": ["type:drupal-profile"],
