@@ -47,6 +47,9 @@
         ],
         "pre-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "@drupal-scaffold"
         ]
     },
     "extra": {
