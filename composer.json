@@ -59,10 +59,6 @@
         "post-update-cmd": [
             "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "echo # drush cim -y",
-            "echo # drush updb -y",
-            "echo # drush cex -y",
-            "echo # git status"
         ]
     },
     "extra": {
