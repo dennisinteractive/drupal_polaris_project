@@ -15,6 +15,10 @@
             "url": "https://repo.packagist.com/dennisdigital/"
         },
         {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
             "packagist.org": false
         }
     ],
