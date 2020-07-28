@@ -21,6 +21,7 @@ site-create:
 	drush -y sql-create
 	drush si polaris -y
 	drush cex -y
+	drush php-eval 'node_access_rebuild();'
 	git init
 	git status
 	echo "Site created and installed, now it's time to commit your files"
