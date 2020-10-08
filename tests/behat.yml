@@ -1,6 +1,10 @@
 default:
   suites:
     default:
+      paths:
+        - %paths.base%/features
+        - %paths.base%/../web/modules
+        - %paths.base%/../web/profiles/polaris/tests/behat
       contexts:
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MessageContext
