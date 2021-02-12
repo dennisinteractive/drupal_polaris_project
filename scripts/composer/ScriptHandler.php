@@ -47,6 +47,9 @@ class ScriptHandler {
           'required' => TRUE,
         ],
       ];
+      $settings['reverse_proxy'] = TRUE;
+      $settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);
+
       drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
 
       $contents = file_get_contents($drupalRoot . '/sites/default/settings.php');
