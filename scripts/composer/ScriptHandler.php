@@ -47,10 +47,17 @@ class ScriptHandler {
           'required' => TRUE,
         ],
       ];
+
       drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
 
       $contents = file_get_contents($drupalRoot . '/sites/default/settings.php');
       $settings = <<<EOF
+
+/**
+ * Reverse Proxy Configuration.
+ */
+\$settings['reverse_proxy'] = TRUE;
+\$settings['reverse_proxy_addresses'] = array(\$_SERVER['REMOTE_ADDR']);
 
 /**
  * Environment DB configuration.
