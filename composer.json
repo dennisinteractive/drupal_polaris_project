@@ -42,7 +42,7 @@
         "composer-exit-on-patch-failure": true,
         "installer-types": ["bower-asset"],
         "locations": {
-            "web-root": "./docroot"
+            "web-root": "web/"
         },
         "file-mapping": {
             "[web-root]/.csslintrc": "assets/.csslintrc",
