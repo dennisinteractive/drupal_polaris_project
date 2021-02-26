@@ -21,11 +21,8 @@
     "require": {
         "php": ">=7.0",
         "composer/installers": "^1.2",
-        "oomphinc/composer-installers-extender": "^1.1",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal-composer/drupal-scaffold": "^2.6",
-        "behat/mink-selenium2-driver": "1.4.x-dev as 1.3.x-dev",
-        "wikimedia/composer-merge-plugin": "^1.4",
+        "wikimedia/composer-merge-plugin": "^2.0.1",
         "dennisdigital/polaris": "dev-CMS-1773-composer-2"
     },
     "conflict": {
