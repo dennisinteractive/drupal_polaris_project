@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: dennisdigital/drupalci:8-apache-interactive
+      - image: dennisdigital/drupalci:9-php7.4-apache-interactive
     steps:
       - checkout
 
