@@ -1,0 +1,42 @@
+diff --git a/lib/Model/OwnerReview.php b/lib/Model/OwnerReview.php
+--- a/lib/Model/OwnerReview.php	(revision 455135ec30587fa5bc1c4cfc113ca3610371c7c1)
++++ b/lib/Model/OwnerReview.php	(date 1620148966560)
+@@ -179,9 +179,7 @@
+      */
+     public function listInvalidProperties()
+     {
+-        $invalidProperties = parent::listInvalidProperties();
+-
+-        return $invalidProperties;
++        return [];
+     }
+
+     /**
+diff --git a/lib/Model/ContentBlocksCollection.php b/lib/Model/ContentBlocksCollection.php
+--- a/lib/Model/ContentBlocksCollection.php	(revision 455135ec30587fa5bc1c4cfc113ca3610371c7c1)
++++ b/lib/Model/ContentBlocksCollection.php	(date 1620148966565)
+@@ -179,9 +179,7 @@
+      */
+     public function listInvalidProperties()
+     {
+-        $invalidProperties = parent::listInvalidProperties();
+-
+-        return $invalidProperties;
++        return [];
+     }
+
+     /**
+diff --git a/lib/Model/BulkData.php b/lib/Model/BulkData.php
+--- a/lib/Model/BulkData.php	(revision 455135ec30587fa5bc1c4cfc113ca3610371c7c1)
++++ b/lib/Model/BulkData.php	(date 1620148966554)
+@@ -179,9 +179,7 @@
+      */
+     public function listInvalidProperties()
+     {
+-        $invalidProperties = parent::listInvalidProperties();
+-
+-        return $invalidProperties;
++        return [];
+     }
+
+     /**
