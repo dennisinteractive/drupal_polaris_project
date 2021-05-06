@@ -5,15 +5,6 @@ jobs:
     docker:
       - image: dennisdigital/drupalci:8-apache-interactive
     steps:
-      - run:
-          command: |
-            while true; do
-              sleep 5
-              ps auxwwf
-              echo "======"
-            done
-          background: true
-
       - checkout
 
       - run:
