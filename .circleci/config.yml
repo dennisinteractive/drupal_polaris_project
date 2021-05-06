@@ -5,6 +5,15 @@ jobs:
     docker:
       - image: dennisdigital/drupalci:8-apache-interactive
     steps:
+      - run:
+          command: |
+            while true; do
+              sleep 5
+              ps auxwwf
+              echo "======"
+            done
+          background: true
+
       - checkout
 
       - run:
@@ -44,10 +53,6 @@ jobs:
 
       - store_test_results:
           path: /tmp/results
-
-      - run:
-          command: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes
-          when: always
 
 workflows:
   version: 2
