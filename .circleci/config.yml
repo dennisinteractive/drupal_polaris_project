@@ -14,7 +14,7 @@ jobs:
             composer config --global --auth http-basic.repo.packagist.com dennisdigital ${PACKAGIST_TOKEN}
             composer create-project dennisdigital/polaris-drupal-project:3.x-dev /var/www/polaris --stability dev --no-interaction --no-install
             cd /var/www/polaris
-            composer install
+            composer --profile -vvv install
 
       - run:
           name: Install profile
