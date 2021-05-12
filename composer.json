@@ -17,7 +17,7 @@
     "require": {
         "php": ">=7.3",
         "composer/installers": "^1.9",
-        "dennisdigital/polaris": "dev-9.x-1.x",
+        "dennisdigital/polaris": "^4.0",
         "drush/drush": "^10.4",
         "oomphinc/composer-installers-extender": "^2.0"
     },
