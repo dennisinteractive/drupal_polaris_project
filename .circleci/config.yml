@@ -23,8 +23,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            cd /var/www/polaris/web
-            ./vendor/bin/phpunit
+            cd /var/www/polaris && sudo -u www-data ./vendor/bin/phpunit
 
       - store_artifacts:
           path: /var/www/polaris/web/sites/default/files/simpletest

@@ -27,7 +27,17 @@
         "drupal/drupal": "*"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/console-extend-plugin": true,
+            "oomphinc/composer-installers-extender": true,
+            "zaporylie/composer-drupal-optimizations": true,
+            "wikimedia/composer-merge-plugin": true,
+            "drupal/core-composer-scaffold": true
+        }
     },
     "autoload": {
         "classmap": [
@@ -38,7 +48,6 @@
         ]
     },
     "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -50,7 +59,6 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "echo # drush cim -y",
             "echo # drush updb -y",
