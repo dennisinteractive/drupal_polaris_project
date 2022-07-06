@@ -38,7 +38,6 @@
         ]
     },
     "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -50,7 +49,6 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "echo # drush cim -y",
             "echo # drush updb -y",
